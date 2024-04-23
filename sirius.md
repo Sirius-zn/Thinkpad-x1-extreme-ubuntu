@@ -22,6 +22,142 @@ sudo dpkg -i xxx.deb
 ### WeChat
 https://askubuntu.com/questions/1440887/can-i-install-wechat-in-ubuntu-22-04 
 
+
+### 1Psw ubuntu desktop
+https://support.1password.com/install-linux/#debian-or-ubuntu
+
+```
+# Duplicates with 1Psw CLI step # 1, 2, 3, skipped
+
+# 1
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+
+# 2
+echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
+
+# 3
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+ curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+ sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+ curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+
+# 4
+sudo apt update && sudo apt install 1password
+
+```
+
+### 1Psw CLI
+#### Official (Link)[https://developer.1password.com/docs/cli/get-started/#install]
+```
+sudo -s \
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" |
+tee /etc/apt/sources.list.d/1password.list
+mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | \
+tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
+gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+apt update && apt install 1password-cli
+```
+#### Modified
+```
+# 1
+sudo curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+
+# 2
+sudo echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/$(dpkg --print-architecture) stable main" | sudo tee /etc/apt/sources.list.d/1password.list
+
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace$ ls /etc/apt/sources.list.d/
+1password.list  apolloauto.list  nvidia-container-toolkit.list
+
+# 3
+sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+
+# 4
+sudo curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+
+# 5
+sudo apt update && sudo apt install 1password-cli
+
+# 6 check version [2.27.0]
+op --version
+
+# 7 shell completion feature with tab, Add this line to .bashrc
+source <(op completion bash)
+```
+
+#### 1Psw CLI cmd [reference](https://developer.1password.com/docs/cli/reference/)
+
+
+
+```
+# list all vaults
+op vault list
+
+# list all items
+op item list
+
+```
+
+```
+op vault --help
+
+Manage permissions and perform CRUD operations on your 1Password vaults.
+
+Usage:  op vault [command] [flags]
+
+Management Commands:
+  group       Manage group vault access
+  user        Manage user vault access
+
+Commands:
+  create      Create a new vault
+  get         Get details about a vault
+  edit        Edit a vault's name, description, icon, or Travel Mode status
+  delete      Remove a vault
+  list        List all vaults in the account
+
+Flags:
+  -h, --help   help for vault
+
+To list the global flags available on every command, run  'op --help'.
+
+Run 'op vault [command] --help' for more information on the command.
+
+```
+
+```
+op item --help
+
+Perform CRUD operations on the 1Password items in your vaults.
+
+Usage:  op item [command] [flags]
+
+Management Commands:
+  template    Manage templates
+
+Commands:
+  create      Create an item
+  get         Get an item's details
+  edit        Edit an item's details
+  delete      Delete or archive an item
+  list        List items
+  move        Move an item between vaults
+  share       Share an item
+
+Flags:
+  -h, --help   help for item
+
+To list the global flags available on every command, run  'op --help'.
+
+Run 'op item [command] --help' for more information on the command.
+
+```
+
 ### orb-slam
 ~/workspace/orb-slam
 
@@ -174,4 +310,34 @@ sudo aem enter
 ```
 # 示例工程中包含一个名为 core 目录，其中 core/cyberfile.xml 文件中描述了工程所依赖软件包，可以通过 buildtool 工具进行依赖包的安装
 buildtool build -p core
+```
+#### buildtool output core -- partial
+```
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+Extracting Bazel installation...
+Starting local Bazel server and connecting to it...
+(11:49:51) INFO: Current date is 2024-04-23
+(11:50:10) INFO: Analyzed target //dev/buildtool/mock:mock_install_src (6 packages loaded, 11 targets configured).
+(11:50:10) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install_src up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install_src
+(11:50:10) INFO: Elapsed time: 23.984s, Critical Path: 0.03s
+(11:50:10) INFO: 4 processes: 4 internal.
+(11:50:10) INFO: Build completed successfully, 4 total actions
+(11:50:10) INFO: Build completed successfully, 4 total actions
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+(11:50:11) INFO: Current date is 2024-04-23
+(11:50:11) INFO: Analyzed target //dev/buildtool/mock:mock_install (0 packages loaded, 5 targets configured).
+(11:50:11) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install
+(11:50:11) INFO: Elapsed time: 0.459s, Critical Path: 0.02s
+(11:50:11) INFO: 4 processes: 4 internal.
+(11:50:11) INFO: Build completed successfully, 4 total actions
+(11:50:11) INFO: Build completed successfully, 4 total actions
+Installing the project stripped...
+-- Installing: /opt/apollo/neo/share/packages/core/cyberfile.xml
+[buildtool] 2024-04-23 11:50:11 INFO compilation done!
 ```
