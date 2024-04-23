@@ -76,6 +76,7 @@ aem start
 ```
 
 #### docker pull output -- partial, skipped download
+```
 Digest: sha256:a40252872d2815b0a9e8fae35487e0d04f7131d5b64e7e73c3a3640d845368cc
 Status: Downloaded newer image for registry.baidubce.com/apollo/apollo-env-gpu:9.0-latest
 registry.baidubce.com/apollo/apollo-env-gpu:9.0-latest
@@ -158,6 +159,8 @@ The home directory `/home/sirius' already exists.  Not copying from `/etc/skel'.
             |_|                                   
 **************************************************************
 [INFO] Query new version of aem...
+
+```
 
 ```
 # 先进入工程目录
