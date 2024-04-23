@@ -1,0 +1,3 @@
+sudo mount //192.168.1.13/Gryffindor -t cifs ./Hogwarts_Gryffindor/ -o username=sirius,vers=2.0,uid=$(id -u),gid=$(id -g),forceuid,forcegid
+
+sudo mount //192.168.1.13/Metaverse -t cifs ./Hogwarts_Metaverse/ -o username=sirius,vers=2.0,uid=$(id -u),gid=$(id -g),forceuid,forcegid
