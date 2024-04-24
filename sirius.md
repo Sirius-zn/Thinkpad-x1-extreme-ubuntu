@@ -30,14 +30,6 @@ https://service.oray.com/question/11969.html
 ### Tencent Meeting
 sudo dpkg -i xxx.deb
 
-### WeChat
-Experimental
-https://askubuntu.com/questions/1440887/can-i-install-wechat-in-ubuntu-22-04 
-
-Wine - windows, said the UI was buggy
-
-Web version, said it was taken down by TenCent
-
 ### Feishu | Lark
 [web download, linux](https://www.feishu.cn/download)
 
@@ -58,29 +50,6 @@ Processing triggers for gnome-menus (3.13.3-11ubuntu1.1) ...
 Processing triggers for desktop-file-utils (0.23-1ubuntu3.18.04.2) ...
 Processing triggers for mime-support (3.60ubuntu1) ...
 Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
-
-```
-
-### 1Psw ubuntu desktop
-https://support.1password.com/install-linux/#debian-or-ubuntu
-
-```
-# Duplicates with 1Psw CLI step # 1, 2, 3, skipped
-
-# 1
-curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-
-# 2
-echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
-
-# 3
-sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
- curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
- sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
- curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-
-# 4
-sudo apt update && sudo apt install 1password
 
 ```
 
@@ -233,6 +202,17 @@ To remove
 
 Fix problems
 https://service.oray.com/question/11969.html 
+
+### Google chrome
+[Download .deb](https://www.google.com/chrome/next-steps.html?platform=linux&statcb=0&installdataindex=empty&defaultbrowser=0)
+```
+sudo apt install libvulkan1
+sudo dpkg -i xxx.deb
+```
+
+### Ubuntu hardware temp monitoring
+https://askubuntu.com/questions/15832/how-do-i-get-the-cpu-temperature
+sensors
 
 ### Tencent Meeting
 sudo dpkg -i xxx.deb
@@ -417,24 +397,8 @@ OpenCV
 ### apollo 8.0
 [Doc](https://apollo.baidu.com/community/Apollo-Homepage-Document/Apollo_Doc_CN_8_0)
 
-### Apollo Studio
-[Hardware Platform](https://apollo.baidu.com/community/hardware)
-[Simulation platform](https://apollo.baidu.com/workspace)
-[Doc Overall](https://apollo.baidu.com/community/Apollo-Homepage-Document?doc=BYFxAcGcC4HpYIbgPYBtXIHQCMEEsATAV0wGNkBbWA5UyRFdZWVBEAU0hFjwDsD2AD0ygKqIA)
-[Doc Simulation Platform](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0/%E6%A6%82%E8%A7%88/)
-
-[Simulation Local Env Install, Apollo + Dreamview](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E4%BB%BF%E7%9C%9F%E7%B3%BB%E7%BB%9F)
-
-[Simulation local tuning](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/%E8%B0%83%E8%AF%95%E6%9C%AC%E5%9C%B0%E4%BB%BF%E7%9C%9F%E7%B3%BB%E7%BB%9F)
-
-[My local simulation combo xh_2024, 6 total, with parking challenge](https://apollo.baidu.com/workspace/scenario-manage/sence-preview-collection/66261ebc3d60cd7f678d919b)
-
-[Lidar Calibration](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/Fuel%E7%A0%94%E5%8F%91%E4%BA%91%E5%B9%B3%E5%8F%B0/%E6%84%9F%E7%9F%A5%E6%A0%87%E5%AE%9A/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E5%A4%96%E5%8F%82%E6%A0%87%E5%AE%9A)
-[Camera Calibration](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/Fuel%E7%A0%94%E5%8F%91%E4%BA%91%E5%B9%B3%E5%8F%B0/%E6%84%9F%E7%9F%A5%E6%A0%87%E5%AE%9A/%E7%9B%B8%E6%9C%BA%E5%A4%96%E5%8F%82%E6%A0%87%E5%AE%9A)
-
-Note: use 15012731636 to login, this has teacher priviledge, github also works, but it's not binded to Apollo teacher certificate training on 04202024-04212024.
-
 ### apollo 9.0
+[Doc](https://apollo.baidu.com/docs/apollo/latest/index.html)
 [Release Conference](https://apollo.baidu.com/community/article/1221)
 [Installation Guide](https://apollo.baidu.com/community/Apollo-Homepage-Document?doc=BYFxAcGcC4HpYIbgPYBtXIHQCMEEsATAV0wGNkBbWA5UyRFdZWVBEAU0hFgoIH0adPgCY%2BADwCiAVnEBBCeIAcATnETFcgMxKZkgGxKAwkoDsa3YoAi45WdGSLxsYt0SzY%2BXICMa98oAMSgYALF7%2B2NhemsLBJsrCYZqKwors7AikBIp6miYmpFJSXpigFKgAxAhEIMg1pHy8mv5AA)
 
@@ -476,7 +440,7 @@ cd application-core
 # 环境设置：识别主机系统是x86_64还是aarch64, 并修改对应的.env和.workspace.json配置
 bash setup.sh
 # 启动容器
-aem start
+sudo aem start
 ```
 
 #### docker pull output -- partial, skipped download
@@ -612,9 +576,609 @@ Installing the project stripped...
 
 ](https://developer.1password.com/docs/ssh/agent/?utm_medium=organic&utm_source=oph&utm_campaign=linux)
 
-### orb-slam
-~/workspace/orb-slam
+### Apollo Studio
+[Hardware Platform](https://apollo.baidu.com/community/hardware)
+[Simulation platform](https://apollo.baidu.com/workspace)
+[Doc Overall](https://apollo.baidu.com/community/Apollo-Homepage-Document?doc=BYFxAcGcC4HpYIbgPYBtXIHQCMEEsATAV0wGNkBbWA5UyRFdZWVBEAU0hFjwDsD2AD0ygKqIA)
+[Doc Simulation Platform](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0/%E6%A6%82%E8%A7%88/)
 
-Pangolin
-OpenCV
-    apt install 
+[Simulation Local Env Install, Apollo + Dreamview](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/%E5%AE%89%E8%A3%85%E6%9C%AC%E5%9C%B0%E4%BB%BF%E7%9C%9F%E7%B3%BB%E7%BB%9F)
+
+#### Simulation Local Env Install, Apollo + Dreamview + local simulation binding to the cloud, one time;
+```
+# Key for the simulation platform over the cloud, run inside docker
+(apollo-9.0)[sirius@in-dev-docker:/apollo_workspace]$ curl -fsSL -o /tmp/apollo-studio-connector-install.sh "http://bj.bcebos.com/apollo-studio/archive/apps/profile/studio_connector_installer/35214804/install.5.5c525332-7d27-4f28-8987-614859da871c.sh?authorization=bce-auth-v1%2F31e5c09d20bb4a4cbad2e1f4f8b230a1%2F2024-04-23T06%3A51%3A38Z%2F300%2F%2Fc7467f8522da493015f2a9651a664be88efda054a0b392f61645150c3cb2f993" && bash /tmp/apollo-studio-connector-install.sh
+
+# Output
+(apollo-9.0)[sirius@in-dev-docker:/apollo_workspace]$ curl -fsSL -o /tmp/apollo-studio-connector-install.sh "http://bj.bcebos.com/apollo-studio/archive/apps/profile/studio_connector_installer/35214804/ins
+tall.5.5c525332-7d27-4f28-8987-614859da871c.sh?authorization=bce-auth-v1%2F31e5c09d20bb4a4cbad2e1f4f8b230a1%2F2024-04-23T06%3A51%3A38Z%2F300%2F%2Fc7467f8522da493015f2a9651a664be88efda054a0b392f61645150c3c
+b2f993" && bash /tmp/apollo-studio-connector-install.sh
+studio_connector/
+studio_connector/libstudio_connector_component.so
+studio_connector/package/
+studio_connector/package/studio_connector_plugin_config_8.0.pb.txt
+studio_connector/package/studio_connector.conf
+studio_connector/package/studio_connector_plugin_config_9.0.pb.txt
+studio_connector/package/studio_connector.dag
+studio_connector/package/studio_connector.launch
+./studio_connector/server.crt
+./studio_connector/AUTH_ID
+./studio_connector/client.key
+./studio_connector/client.crt
+./sim_obstacle/sim_obstacle
+mkdir: created directory '/home/sirius/.apollo/dreamview'
+mkdir: created directory '/home/sirius/.apollo/dreamview/plugins'
+mkdir: created directory '/home/sirius/.apollo/dreamview/plugins/studio_connector'
+'/tmp/apollo-studio-connector-install-pkg-kd0Vmo42k1/studio_connector/AUTH_ID' -> '/home/sirius/.apollo/dreamview/plugins/studio_connector/AUTH_ID'
+'/tmp/apollo-studio-connector-install-pkg-kd0Vmo42k1/studio_connector/client.crt' -> '/home/sirius/.apollo/dreamview/plugins/studio_connector/client.crt'
+'/tmp/apollo-studio-connector-install-pkg-kd0Vmo42k1/studio_connector/client.key' -> '/home/sirius/.apollo/dreamview/plugins/studio_connector/client.key'
+'/tmp/apollo-studio-connector-install-pkg-kd0Vmo42k1/studio_connector/server.crt' -> '/home/sirius/.apollo/dreamview/plugins/studio_connector/server.crt'
+
+# 启动 Apollo 环境容器成功后，在当前命令窗口下，安装仿真需要的模块。[legacy optional, outdated for apollo 9.0 seems like, `buildtool build -p core` from above already has everything bundled together]
+aem init && buildtool install --legacy dreamview-dev && buildtool install --legacy monitor-dev && buildtool install planning-dev routing-dev
+
+# Output
+(apollo-9.0)[sirius@in-dev-docker:/apollo_workspace]$ aem init && buildtool install --legacy dreamview-dev && buildtool install --legacy monitor-dev && buildtool install planning-dev routing-dev
+[buildtool] 2024-04-23 15:00:52 INFO Reconfigure apollo enviroment setup
+[INFO] Query new version of aem...
+[buildtool] 2024-04-23 15:00:57 INFO update repo apollo-tools
+[buildtool] 2024-04-23 15:00:57 INFO update complete
+[buildtool] 2024-04-23 15:00:57 INFO update repo apollo-core
+[buildtool] 2024-04-23 15:00:57 INFO update complete
+[buildtool] 2024-04-23 15:00:57 INFO Reconfigure apollo enviroment setup
+[buildtool] 2024-04-23 15:00:57 ERROR Encounter ErrCode.ParamErr
+[buildtool] 2024-04-23 15:00:57 ERROR hint: dreamview-dev is not an apollo package, skip it
+[buildtool] 2024-04-23 15:01:08 INFO No package will be processed
+[buildtool] 2024-04-23 15:01:11 INFO update repo apollo-tools
+[buildtool] 2024-04-23 15:01:11 INFO update complete
+[buildtool] 2024-04-23 15:01:11 INFO update repo apollo-core
+[buildtool] 2024-04-23 15:01:11 INFO update complete
+[buildtool] 2024-04-23 15:01:11 INFO Reconfigure apollo enviroment setup
+[buildtool] 2024-04-23 15:01:11 ERROR Encounter ErrCode.ParamErr
+[buildtool] 2024-04-23 15:01:11 ERROR hint: monitor-dev is not an apollo package, skip it
+[buildtool] 2024-04-23 15:01:22 INFO No package will be processed
+[buildtool] 2024-04-23 15:01:25 INFO update repo apollo-tools
+[buildtool] 2024-04-23 15:01:25 INFO update complete
+[buildtool] 2024-04-23 15:01:25 INFO update repo apollo-core
+[buildtool] 2024-04-23 15:01:25 INFO update complete
+[buildtool] 2024-04-23 15:01:25 INFO Reconfigure apollo enviroment setup
+[buildtool] 2024-04-23 15:01:25 ERROR Encounter ErrCode.ParamErr
+[buildtool] 2024-04-23 15:01:25 ERROR hint: planning-dev is not an apollo package, skip it
+[buildtool] 2024-04-23 15:01:25 ERROR Encounter ErrCode.ParamErr
+[buildtool] 2024-04-23 15:01:25 ERROR hint: routing-dev is not an apollo package, skip it
+[buildtool] 2024-04-23 15:01:35 INFO No package will be processed
+
+Note: seems like application-core build already has everything built by `buildtool build -p core` from above;
+```
+
+[Simulation Local Tuning](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/%E4%BB%BF%E7%9C%9F%E5%B9%B3%E5%8F%B0/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/%E8%B0%83%E8%AF%95%E6%9C%AC%E5%9C%B0%E4%BB%BF%E7%9C%9F%E7%B3%BB%E7%BB%9F)
+
+#### Simulation Local Tuning
+```
+# cyber_launch missing, fix
+
+sudo buildtool build
+
+# output
+(apollo-9.0)[sirius@in-dev-docker:/apollo_workspace]$ buildtool build                                                                                                                                       
+[buildtool] 2024-04-23 15:15:10 INFO update repo apollo-tools                                                                                                                                               
+[buildtool] 2024-04-23 15:15:10 INFO update complete
+[buildtool] 2024-04-23 15:15:10 INFO update repo apollo-core
+[buildtool] 2024-04-23 15:15:11 INFO update complete
+[buildtool] 2024-04-23 15:15:11 INFO Reconfigure apollo enviroment setup
+[buildtool] 2024-04-23 15:15:21 INFO Analyzing dependencies topological graph...
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess 3rd-grpc
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess 3rd-grpc
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libqhull7
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libqhull7
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess 3rd-gflags
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess 3rd-gflags
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libpcap0.8
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libpcap0.8
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess 3rd-glog
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess 3rd-glog
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libceres-dev
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libceres-dev
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libtiff5
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libtiff5
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess rsdriver
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess rsdriver
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libdouble-conversion1
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libdouble-conversion1
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libcurl4-openssl-dev
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libcurl4-openssl-dev
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess 3rd-yaml-cpp
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess 3rd-yaml-cpp
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libopenni0
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libopenni0
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libflann-dev
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libflann-dev
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess libfreetype6
+[buildtool] 2024-04-23 15:15:23 INFO PostProcess libfreetype6
+[buildtool] 2024-04-23 15:15:23 INFO Import depends...
+[buildtool] 2024-04-23 15:15:23 INFO Preprocess 3rd-rules-python
+
+... (skipped)
+
+[buildtool] 2024-04-23 15:15:29 INFO PostProcess planning-scenario-traffic-light-protected
+[buildtool] 2024-04-23 15:15:29 INFO Import depends...
+[buildtool] 2024-04-23 15:15:29 INFO Preprocess perception-lidar-detection-filter
+[buildtool] 2024-04-23 15:15:29 INFO PostProcess perception-lidar-detection-filter
+[buildtool] 2024-04-23 15:15:29 INFO Import depends...
+[buildtool] 2024-04-23 15:15:29 INFO Preprocess perception-msg-adapter
+[buildtool] 2024-04-23 15:15:29 INFO PostProcess perception-msg-adapter
+[buildtool] 2024-04-23 15:15:29 INFO Import depends...
+[buildtool] 2024-04-23 15:15:29 INFO Preprocess canbus-vehicle-lexus
+[buildtool] 2024-04-23 15:15:29 INFO PostProcess canbus-vehicle-lexus
+[buildtool] 2024-04-23 15:15:29 INFO Import depends...
+[buildtool] 2024-04-23 15:15:29 INFO Preprocess planning-scenario-emergency-stop
+[buildtool] 2024-04-23 15:15:29 INFO PostProcess planning-scenario-emergency-stop
+[buildtool] 2024-04-23 15:15:29 INFO Import depends...
+[buildtool] 2024-04-23 15:15:29 INFO Preprocess planning-task-pull-over-path
+[buildtool] 2024-04-23 15:15:29 INFO PostProcess planning-task-pull-over-path
+[buildtool] 2024-04-23 15:15:29 INFO Import depends...
+[buildtool] 2024-04-23 15:15:29 INFO Preprocess planning
+[buildtool] 2024-04-23 15:15:29 INFO PostProcess planning
+[buildtool] 2024-04-23 15:15:29 INFO Import depends...
+[buildtool] 2024-04-23 15:15:29 INFO Preprocess sim-obstacle
+[buildtool] 2024-04-23 15:15:29 INFO PostProcess sim-obstacle
+[buildtool] 2024-04-23 15:15:29 INFO Import depends...
+[buildtool] 2024-04-23 15:15:29 INFO Preprocess core
+[buildtool] 2024-04-23 15:15:29 INFO Using Source of core
+[buildtool] 2024-04-23 15:15:30 INFO PostProcess core
+[buildtool] 2024-04-23 15:15:30 INFO Compiling whole workspace...
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+Starting local Bazel server and connecting to it...
+(15:15:31) INFO: Current date is 2024-04-23
+(15:15:32) INFO: Analyzed target //dev/buildtool/mock:mock_install_src (6 packages loaded, 11 targets configured).
+(15:15:32) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install_src up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install_src
+(15:15:32) INFO: Elapsed time: 2.761s, Critical Path: 0.02s
+(15:15:32) INFO: 1 process: 1 internal.
+(15:15:32) INFO: Build completed successfully, 1 total action
+(15:15:32) INFO: Build completed successfully, 1 total action
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+(15:15:33) INFO: Current date is 2024-04-23
+(15:15:33) INFO: Analyzed target //dev/buildtool/mock:mock_install (0 packages loaded, 5 targets configured).
+(15:15:33) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install
+(15:15:33) INFO: Elapsed time: 0.284s, Critical Path: 0.01s
+(15:15:33) INFO: 1 process: 1 internal.
+(15:15:33) INFO: Build completed successfully, 1 total action
+(15:15:33) INFO: Build completed successfully, 1 total action
+Installing the project stripped...
+-- Installing: /opt/apollo/neo/share/packages/core/cyberfile.xml
+[buildtool] 2024-04-23 15:15:33 INFO compilation done!
+
+Conclution: `buildtool build` didn't fix
+  [buildtool] 2024-04-23 15:19:40 ERROR hint: Could not find cyber_launch. Is cyber already installed?
+
+# steps from apollo-edu-pre install-neo-core.sh
+```
+pip3 install requests -i https://mirror.baidu.com/pypi/simple/ --trusted-host mirror.baidu.com
+sudo apt install -y --allow-unauthenticated uuid-dev apollo-neo-cyber-dev apollo-neo-common-dev apollo-neo-common-msgs-dev
+
+# Output
+(apollo-9.0)[sirius@in-dev-docker:/apollo_workspace]$ sudo apt install -y --allow-unauthenticated uuid-dev apollo-neo-cyber-dev apollo-neo-common-dev apollo-neo-common-msgs-dev
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+E: Unable to locate package apollo-neo-cyber-dev
+E: Unable to locate package apollo-neo-common-dev
+E: Unable to locate package apollo-neo-common-msgs-dev
+
+```
+
+# Dreamview+ 
+sudo aem bootstrap start --plus
+
+```
+
+[My local simulation combo xh_2024, 6 total, with parking challenge](https://apollo.baidu.com/workspace/scenario-manage/sence-preview-collection/66261ebc3d60cd7f678d919b)
+
+
+[Lidar Calibration](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/Fuel%E7%A0%94%E5%8F%91%E4%BA%91%E5%B9%B3%E5%8F%B0/%E6%84%9F%E7%9F%A5%E6%A0%87%E5%AE%9A/%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E5%A4%96%E5%8F%82%E6%A0%87%E5%AE%9A)
+[Camera Calibration](https://apollo.baidu.com/Apollo-Homepage-Document/Apollo_Studio/Fuel%E7%A0%94%E5%8F%91%E4%BA%91%E5%B9%B3%E5%8F%B0/%E6%84%9F%E7%9F%A5%E6%A0%87%E5%AE%9A/%E7%9B%B8%E6%9C%BA%E5%A4%96%E5%8F%82%E6%A0%87%E5%AE%9A)
+
+Note: use 15012731636 to login, this has teacher priviledge, github also works, but it's not binded to Apollo teacher certificate training on 04202024-04212024.
+
+#### Normal Routine
+```
+# 1
+cd ~/workspace/apollo_9.0/application-core
+sudo aem start
+sudo aem enter
+
+# pick a car
+aem profile use sample
+
+# optional, replay
+wget https://apollo-system.cdn.bcebos.com/dataset/6.0_edu/demo_3.5.record -P $HOME/.apollo/resources/records/
+buildtool map get sunnyvale
+buildtool map list
+
+# Dreamview+ 
+sudo aem bootstrap start --plus
+
+```
+
+### Apollo Carla Bridge
+[github](https://github.com/guardstrikelab/carla_apollo_bridge?tab=readme-ov-file)
+
+```
+sudo apt install docker-compose
+
+```
+
+### PNC try
+[Guide](https://apollo.baidu.com/community/article/1239)
+```
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/apollo_9.0/application-pnc$ sudo aem start_gpu                                                                                                        [74/148]
+apollo_neo_dev_9.0.0_rc_r10_pnc_comp_apollo                                                                                                                                                                 
+apollo_neo_dev_9.0.0_rc_r10_pnc_comp_opt                                                                                                                                                                    
+[INFO] Determine whether host GPU is available ...                                                                                                                                                          
+[INFO] USE_GPU_HOST: 1                                                                                                                                                                                      
+[INFO] Start pulling docker image registry.baidubce.com/apollo/apollo-env-gpu:9.0-latest ...                                                                                                                
+9.0-latest: Pulling from apollo/apollo-env-gpu                                                                                                                                                              
+Digest: sha256:a40252872d2815b0a9e8fae35487e0d04f7131d5b64e7e73c3a3640d845368cc                                                                                                                             
+Status: Image is up to date for registry.baidubce.com/apollo/apollo-env-gpu:9.0-latest                                                                                                                      
+registry.baidubce.com/apollo/apollo-env-gpu:9.0-latest                                                                                                                                                      
+[INFO] Remove existing Apollo Development container ...                                                                                                                                                     
+[INFO] Starting Docker container "apollo_neo_dev_9.0.0_rc_r10_pnc_comp" ...  
+
+(... skipped)
+
+Preparing to unpack .../apollo-neo-buildtool_9.0.0-rc1-r14_amd64.deb ...                                                                                                                                    
+Unpacking apollo-neo-buildtool (9.0.0-rc1-r14) over (9.0.0-alpha3-r3) ...                                                                                                                                   
+Setting up apollo-neo-buildtool (9.0.0-rc1-r14) ... 
+
+(... skipped)
+
+apollo_neo_dev_9.0.0_rc_r10_pnc_comp
+```
+
+```
+buildtool build -p core
+
+# Output
+(... skipped)
+
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:                                                    [2/1084]
+/apollo_workspace/tools/bazel.rc
+Extracting Bazel installation...
+Starting local Bazel server and connecting to it...
+(10:57:40) INFO: Current date is 2024-04-23
+(10:57:56) INFO: Analyzed target //dev/buildtool/mock:mock_install_src (6 packages loaded, 11 targets configured).
+(10:57:56) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install_src up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install_src
+(10:57:56) INFO: Elapsed time: 19.143s, Critical Path: 0.04s
+(10:57:56) INFO: 4 processes: 4 internal.
+(10:57:56) INFO: Build completed successfully, 4 total actions
+(10:57:56) INFO: Build completed successfully, 4 total actions
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+(10:57:56) INFO: Current date is 2024-04-23
+(10:57:56) INFO: Analyzed target //dev/buildtool/mock:mock_install (0 packages loaded, 5 targets configured).
+(10:57:56) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install
+(10:57:56) INFO: Elapsed time: 0.346s, Critical Path: 0.02s
+(10:57:56) INFO: 4 processes: 4 internal.
+(10:57:56) INFO: Build completed successfully, 4 total actions
+(10:57:56) INFO: Build completed successfully, 4 total actions
+Installing the project stripped...
+-- Installing: /opt/apollo/neo/share/packages/core/cyberfile.xml
+[buildtool] 2024-04-23 18:57:57 INFO compilation done!
+
+#需要执行两次
+buildtool build -p core
+
+# Output
+
+(... skipped)
+
+[buildtool] 2024-04-23 19:43:48 INFO Preprocess core                                                                                                                                                [5/1574]
+[buildtool] 2024-04-23 19:43:48 INFO Using Source of core
+[buildtool] 2024-04-23 19:43:49 INFO PostProcess core
+[buildtool] 2024-04-23 19:43:49 INFO Compiling whole workspace...
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+(11:43:49) INFO: Current date is 2024-04-23
+(11:43:50) INFO: Analyzed target //dev/buildtool/mock:mock_install_src (2 packages loaded, 5 targets configured).
+(11:43:50) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install_src up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install_src
+(11:43:50) INFO: Elapsed time: 0.877s, Critical Path: 0.01s
+(11:43:50) INFO: 1 process: 1 internal.
+(11:43:50) INFO: Build completed successfully, 1 total action
+(11:43:50) INFO: Build completed successfully, 1 total action
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+(11:43:50) INFO: Current date is 2024-04-23
+(11:43:50) INFO: Analyzed target //dev/buildtool/mock:mock_install (1 packages loaded, 6 targets configured).
+(11:43:50) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install
+(11:43:50) INFO: Elapsed time: 0.282s, Critical Path: 0.01s
+(11:43:50) INFO: 1 process: 1 internal.
+(11:43:50) INFO: Build completed successfully, 1 total action
+(11:43:50) INFO: Build completed successfully, 1 total action
+Installing the project stripped...
+-- Installing: /opt/apollo/neo/share/packages/core/cyberfile.xml
+[buildtool] 2024-04-23 19:43:50 INFO compilation done!
+
+#下载planning_base
+buildtool install planning
+
+```
+
+```
+buildtool build
+
+#Output
+
+(... skipped)
+
+[buildtool] 2024-04-23 19:57:21 INFO Preprocess core                                                                                                                                               [24/1835]
+[buildtool] 2024-04-23 19:57:21 INFO Using Source of core                                                                                                                                                   
+[buildtool] 2024-04-23 19:57:21 INFO PostProcess core                                                                                                                                                       
+[buildtool] 2024-04-23 19:57:21 INFO Requiring planning=local, Removing planning=9.0.0-rc-r10                                                                                                               
+[buildtool] 2024-04-23 19:57:21 INFO Compiling whole workspace...                                                                                                                                           
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:                                                            
+/apollo_workspace/tools/bazel.rc                                                                                                                                                                            
+(11:57:21) INFO: Current date is 2024-04-23                                                                                                                                                                 
+(11:57:22) INFO: Analyzed target //dev/buildtool/mock:mock_install_src (3 packages loaded, 9 targets configured).                                                                                           
+(11:57:22) INFO: Found 1 target...                                                                                                                                                                          
+Target //dev/buildtool/mock:mock_install_src up-to-date:                                                                                                                                                    
+  bazel-bin/dev/buildtool/mock/mock_install_src                                                                                                                                                             
+(11:57:22) INFO: Elapsed time: 0.873s, Critical Path: 0.01s                                                                                                                                                 
+(11:57:22) INFO: 4 processes: 4 internal.                                                                                                                                                                   
+(11:57:22) INFO: Build completed successfully, 4 total actions                                                                                                                                              
+(11:57:22) INFO: Build completed successfully, 4 total actions                                                                                                                                              
+[INFO] can not calculate common prefix, install all                                                                                                                                                         
+[INFO] can not calculate common prefix, install all                                                                                                                                                         
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:                                                            
+/apollo_workspace/tools/bazel.rc                                                                                                                                                                            
+(11:57:22) INFO: Current date is 2024-04-23                                                                                                                                                                 
+(11:57:27) INFO: Analyzed target //dev/buildtool/mock:mock_install (156 packages loaded, 22048 targets configured).                                                                                         
+(11:57:27) INFO: Found 1 target...                                                                                                                                                                          
+Target //dev/buildtool/mock:mock_install up-to-date:                                                                                                                                                        
+  bazel-bin/dev/buildtool/mock/mock_install
+(11:59:44) INFO: Elapsed time: 141.680s, Critical Path: 77.34s
+(11:59:44) INFO: 20653 processes: 20505 internal, 148 processwrapper-sandbox.
+(11:59:44) INFO: Build completed successfully, 20653 total actions
+(11:59:44) INFO: Build completed successfully, 20653 total actions
+Installing the project stripped...
+-- Installing: /opt/apollo/neo/lib/modules/planning/planning_component/libDO_NOT_IMPORT_planning_component.so
+-- Installing: /opt/apollo/neo/lib/modules/planning/planning_component/libplanning_component.so
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/discrete_points_smoother_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/navi_planner_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/planner_open_space_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning.conf
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_navi.conf
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_semantic_map_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/public_road_planner_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/qp_spline_smoother_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/spiral_smoother_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/conf/traffic_rule_config.pb.txt
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/dag/planning.dag
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/dag/planning_navi.dag
+-- Installing: /opt/apollo/neo/share/modules/planning/planning_component/launch/planning.launch
+-- Installing: /opt/apollo/neo/share/packages/planning/cyberfile.xml
+-- Installing: /opt/apollo/neo/share/packages/core/cyberfile.xml
+[buildtool] 2024-04-23 19:59:44 INFO compilation done!
+```
+
+#### Try to fix missing cyber_launch
+
+```
+Mine:
+(apollo-9.0)[sirius@in-dev-docker:/apollo_workspace]$ cat .workspace.json
+{
+    "repositories" : [
+        {"name": "apollo-core", "version": "9.0.0-rc-r10"}
+    ]
+}
+In this link: 
+https://apollo.baidu.com/community/article/1159
+
+"apollo-core", "version": "9.0.0-alpha2-r28"
+
+
+sudo apt  remove apollo-neo-buildtool
+Removing apollo-neo-buildtool (9.0.0-rc1-r14) ...
+
+
+Get:1 https://apollo-pkg-beta.cdn.bcebos.com/apollo/core bionic/main amd64 apollo-neo-buildtool amd64 9.0.0-rc1-r14 [127 kB]                                                                                
+Fetched 127 kB in 1s (200 kB/s)                                                                                                                                                                             
+Selecting previously unselected package apollo-neo-buildtool.                                                                                                                                               
+(Reading database ... 63625 files and directories currently installed.)                                                                                                                                     
+Preparing to unpack .../apollo-neo-buildtool_9.0.0-rc1-r14_amd64.deb ...                                                                                                                                    
+Unpacking apollo-neo-buildtool (9.0.0-rc1-r14) ...                                                                                                                                                          
+Setting up apollo-neo-buildtool (9.0.0-rc1-r14) ... 
+
+buildtool build -p core X 2
+
+[buildtool] 2024-04-23 20:51:55 INFO Preprocess core                                                                                                                                              [532/1993]
+[buildtool] 2024-04-23 20:51:55 INFO Using Source of core                                                                                                                                                   
+[buildtool] 2024-04-23 20:51:55 INFO PostProcess core                                                                                                                                                       
+[buildtool] 2024-04-23 20:51:55 INFO Compiling whole workspace...                                                                                                                                           
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:                                                            
+/apollo_workspace/tools/bazel.rc                                                                                                                                                                            
+(12:51:55) INFO: Current date is 2024-04-23                                                                                                                                                                 
+(12:51:56) INFO: Analyzed target //dev/buildtool/mock:mock_install_src (3 packages loaded, 9 targets configured).                                                                                           
+(12:51:56) INFO: Found 1 target...                                                                                                                                                                          
+Target //dev/buildtool/mock:mock_install_src up-to-date:                                                                                                                                                    
+  bazel-bin/dev/buildtool/mock/mock_install_src                                                                                                                                                             
+(12:51:56) INFO: Elapsed time: 1.661s, Critical Path: 0.00s                                                                                                                                                 
+(12:51:56) INFO: 1 process: 1 internal.                                                                                                                                                                     
+(12:51:56) INFO: Build completed successfully, 1 total action                                                                                                                                               
+(12:51:57) INFO: Build completed successfully, 1 total action                                                                                                                                               
+[INFO] can not calculate common prefix, install all                                                                                                                                                         
+[INFO] can not calculate common prefix, install all                                                                                                                                                         
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:                                                            
+/apollo_workspace/tools/bazel.rc                                                                                                                                                                            
+(12:51:57) INFO: Current date is 2024-04-23                                                                                                                                                                 
+(12:51:59) INFO: Analyzed target //dev/buildtool/mock:mock_install (156 packages loaded, 22048 targets configured).                                                                                         
+(12:51:59) INFO: Found 1 target...                                                                                                                                                                          
+Target //dev/buildtool/mock:mock_install up-to-date:                                                                                                                                                        
+  bazel-bin/dev/buildtool/mock/mock_install                                                                                                                                                                 
+(12:52:03) INFO: Elapsed time: 5.952s, Critical Path: 2.68s                                                                                                                                                 
+(12:52:03) INFO: 6 processes: 4 internal, 2 processwrapper-sandbox.
+(12:52:03) INFO: Build completed successfully, 6 total actions
+(12:52:03) INFO: Build completed successfully, 6 total actions
+Installing the project stripped...
+-- Installing: /opt/apollo/neo/lib/modules/planning/planning_component/libDO_NOT_IMPORT_planning_component.so
+-- Installing: /opt/apollo/neo/lib/modules/planning/planning_component/libplanning_component.so
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/discrete_points_smoother_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/navi_planner_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planner_open_space_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning.conf
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_navi.conf
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_semantic_map_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/public_road_planner_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/qp_spline_smoother_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/spiral_smoother_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/traffic_rule_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/dag/planning.dag
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/dag/planning_navi.dag
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/launch/planning.launch
+-- Installing: /opt/apollo/neo/share/packages/planning/cyberfile.xml
+-- Installing: /opt/apollo/neo/share/packages/core/cyberfile.xml
+[buildtool] 2024-04-23 20:52:03 INFO compilation done!
+(apollo-9.0)[sirius@in-dev-docker:/apollo_workspace]$ buildtool build -p core
+
+(... skipped)
+
+[buildtool] 2024-04-23 20:52:51 INFO Preprocess core                                                                                                                                                        
+[buildtool] 2024-04-23 20:52:51 INFO Using Source of core                                                                                                                                                   
+[buildtool] 2024-04-23 20:52:51 INFO PostProcess core
+[buildtool] 2024-04-23 20:52:51 INFO Compiling whole workspace...
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+(12:52:52) INFO: Current date is 2024-04-23
+(12:52:52) INFO: Analyzed target //dev/buildtool/mock:mock_install_src (3 packages loaded, 9 targets configured).
+(12:52:52) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install_src up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install_src
+(12:52:53) INFO: Elapsed time: 1.535s, Critical Path: 0.00s
+(12:52:53) INFO: 1 process: 1 internal.
+(12:52:53) INFO: Build completed successfully, 1 total action
+(12:52:53) INFO: Build completed successfully, 1 total action
+[INFO] can not calculate common prefix, install all
+[INFO] can not calculate common prefix, install all
+WARNING: The following rc files are no longer being read, please transfer their contents or import their path into one of the standard rc files:
+/apollo_workspace/tools/bazel.rc
+(12:52:54) INFO: Current date is 2024-04-23
+(12:52:55) INFO: Analyzed target //dev/buildtool/mock:mock_install (156 packages loaded, 22048 targets configured).
+(12:52:55) INFO: Found 1 target...
+Target //dev/buildtool/mock:mock_install up-to-date:
+  bazel-bin/dev/buildtool/mock/mock_install
+(12:52:56) INFO: Elapsed time: 2.923s, Critical Path: 0.07s
+(12:52:56) INFO: 1 process: 1 internal.
+(12:52:56) INFO: Build completed successfully, 1 total action
+(12:52:56) INFO: Build completed successfully, 1 total action
+Installing the project stripped...
+-- Up-to-date: /opt/apollo/neo/lib/modules/planning/planning_component/libDO_NOT_IMPORT_planning_component.so
+-- Up-to-date: /opt/apollo/neo/lib/modules/planning/planning_component/libplanning_component.so
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/discrete_points_smoother_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/navi_planner_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planner_open_space_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning.conf
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_navi.conf
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/planning_semantic_map_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/public_road_planner_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/qp_spline_smoother_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/spiral_smoother_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/conf/traffic_rule_config.pb.txt
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/dag/planning.dag
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/dag/planning_navi.dag
+-- Up-to-date: /opt/apollo/neo/share/modules/planning/planning_component/launch/planning.launch
+-- Installing: /opt/apollo/neo/share/packages/planning/cyberfile.xml
+-- Installing: /opt/apollo/neo/share/packages/core/cyberfile.xml
+[buildtool] 2024-04-23 20:52:57 INFO compilation done!
+
+# Conclutions
+Did remove apollo-neo-buildtool, and rebuild core X 2, same error, didn't work;
+```
+
+#### Try cpu only
+application-pnc$ cat .env
+change apollo-env-gpu to apollo-env-cpu
+```
+sudo aem start_cpu
+
+# Output
+Status: Downloaded newer image for registry.baidubce.com/apollo/apollo-env-cpu:9.0-latest
+registry.baidubce.com/apollo/apollo-env-cpu:9.0-latest
+[ OK ] apollo_neo_dev_9.0.0_rc_r10_pnc_comp is still running, please run the following command:
+[ OK ]     aem enter
+[ OK ] Enjoy!
+
+aem list
+
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/apollo_9.0/application-pnc$ sudo aem list
+[INFO] Environment containers:
+apollo_neo_dev_9.0.0_rc_r10_pnc_comp /home/sirius/workspace/apollo_9.0/application-pnc/.aem
+apollo_neo_dev_9.0.0_rc_r10_core /home/sirius/workspace/apollo_9.0/application-core/.aem
+apollo_neo_dev_root
+[INFO] Query new version of aem...
+sirius@sirius-ThinkPad-X1-Extreme:~/
+
+seems like the GPU version got destroyed;
+
+sudo aem enter
+```
+
+#### Solution to everything
+sudo chown sirius:sirius -R /opt/apollo/neo/data/log
+
+```
+# !!! Please don't use sudo
+aem bootstrap start --plus
+```
+
+#### Routine
+```
+sudo aem start_gpu
+sudo aem enter
+
+# 1st time only
+buildtool build -p core
+buildtool build -p core
+buildtool map get xh_2024_contest
+buildtool map list
+
+buildtool install planning
+
+# launch DV
+sudo chown sirius:sirius -R /opt/apollo/neo/data/log
+aem bootstrap start --plus
+
+```
+
+#### Install Profiler
+
+[Install profiler](https://apollo.baidu.com/community/article/1031)
