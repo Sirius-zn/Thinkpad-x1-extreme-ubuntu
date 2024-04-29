@@ -391,8 +391,131 @@ so far, ssh github key is usable, so I'm gonna ignore it for now;
 ~/workspace/orb-slam
 
 Pangolin
+  Catch2: https://github.com/catchorg/Catch2.git | latest is v3
+      Catch2 [git checkout v2.x]
+  [find_package Error: unable to locate Catch2]
+
+  vcpkg route
+  https://github.com/Microsoft/vcpkg 
+
+  ```
+  git clone https://github.com/Microsoft/vcpkg.git
+  cd vcpkg
+  ./bootstrap-vcpkg.sh
+  ./vcpkg integrate install
+  ./vcpkg install pangolin
+  ```
+
+  ```
+  vcpkg Ouput
+
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ ./bootstrap-vcpkg.sh
+Downloading vcpkg-glibc...
+vcpkg package management program version 2024-04-23-d6945642ee5c3076addd1a42c331bbf4cfc97457
+
+See LICENSE.txt for license information.
+Telemetry
+---------
+vcpkg collects usage data in order to help us improve your experience.
+The data collected by Microsoft is anonymous.
+You can opt-out of telemetry by re-running the bootstrap-vcpkg script with -disableMetrics,
+passing --disable-metrics to vcpkg on the command line,
+or by setting the VCPKG_DISABLE_METRICS environment variable.
+
+Read more about vcpkg telemetry at docs/about/privacy.md
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ ./vcpkg integrate install
+Applied user-wide integration for this vcpkg root.
+CMake projects should use: "-DCMAKE_TOOLCHAIN_FILE=/home/sirius/workspace/vcpkg/scripts/buildsystems/vcpkg.cmake"
+
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ ./vcpkg install pangolin
+
+(...) skipped
+
+CMake Error at packages/vcpkg-tool-meson_x64-linux/share/vcpkg-tool-meson/vcpkg-port-config.cmake:60 (message):
+  Found Python version '3.6.9 at /usr/bin/python3' is insufficient for meson.
+  meson requires at least version '3.7'
+Call Stack (most recent call first):
+  ports/vcpkg-tool-meson/portfile.cmake:39 (include)
+  scripts/ports.cmake:175 (include)
+
+-------------------------------------
+(fix)
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ sudo apt install python3.7
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ sudo ln -sf /usr/bin/python3.7 /usr/bin/python3
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ which python3
+/usr/bin/python3
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ ls -l /usr/bin/python3
+lrwxrwxrwx 1 root root 18 Apr 29 15:07 /usr/bin/python3 -> /usr/bin/python3.7
+
+(after upgrading to python 3, apt-get and terminal will have problem opening)
+sudo apt-get --reinstall install python3-minimal will fix the problem but reset python3 symbolic link back to python3.6
+
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2
+
+sudo update-alternatives --config python3
+-------------------------
+
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ ./vcpkg install pangolin
+
+(...) skipped
+
+-- Using source at /home/sirius/workspace/vcpkg/buildtrees/ffmpeg/src/n6.1.1-bf510528a2.clean
+CMake Error at scripts/cmake/vcpkg_find_acquire_program.cmake:166 (message):
+  Could not find nasm.  Please install it via your package manager:
+
+      sudo apt-get install nasm
+Call Stack (most recent call first):
+  ports/ffmpeg/portfile.cmake:29 (vcpkg_find_acquire_program)
+  scripts/ports.cmake:175 (include)
+
+(fix)
+sudo apt-get install nasm
+
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/vcpkg$ ./vcpkg install pangolin
+
+Building ffmpeg for release... [cpu blasting...]
+
+CMake Warning at ports/glew/portfile.cmake:2 (message):
+  glew requires the following libraries from the system package manager:
+
+      libxmu-dev
+      libxi-dev
+      libgl-dev
+
+(fix)
+sudo apt-get install libxmu-dev libxi-dev libgl-dev
+sudo apt-get install libgl1-mesa-dev
+sudo apt install libglu1-mesa-dev
+
+./vcpkg install pangolin [succeed]
+
+  ```
+
+(How to build with vcpkg managed C++ packages)[https://github.com/Microsoft/vcpkg]
+
+When using vcpkg as a submodule of your project, you can add the following to your CMakeLists.txt before the first project() call, instead of passing CMAKE_TOOLCHAIN_FILE to the cmake invocation.
+
+```
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+  CACHE STRING "Vcpkg toolchain file")
+```
+
+g2o
+
+Eigen
+    sudo apt-get install libeigen3-dev
+    Get:1 http://mirrors.tuna.tsinghua.edu.cn/ubuntu bionic/universe amd64 libeigen3-dev all 3.3.4-4 [810 kB]
+
+    [Don't build from src yet]
+
 OpenCV
-    apt install 
+    https://opencv.org/get-started/
+    Python | pip3 install opencv-python
+    C++ | apt install libopencv-dev
+      libopencv-dev is already the newest version (3.2.0+dfsg-4ubuntu0.1)
+
+    [Don't build from src yet]
 
 ### apollo 8.0
 [Doc](https://apollo.baidu.com/community/Apollo-Homepage-Document/Apollo_Doc_CN_8_0)
@@ -1180,5 +1303,79 @@ aem bootstrap start --plus
 ```
 
 #### Install Profiler
-
 [Install profiler](https://apollo.baidu.com/community/article/1031)
+
+
+#### pnc gpu too short broken so fix
+```
+Removing apollo-neo-buildtool (9.0.0-rc1-r14) ...                                                                                                                                                           
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/pkg_maker/generator' not empty so not removed                                               
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/pkg_maker/common' not empty so not removed                                                  
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/pkg_maker/action' not empty so not removed                                                  
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/core/version_decide/semver' not empty so not removed                                        
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/core/version_decide/mixology' not empty so not removed                                      
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/core/version_decide/cyberfile' not empty so not removed                                     
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/core/task/bazel/handler' not empty so not removed                                           
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/core/package_identification' not empty so not removed                                       
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/core/pack_lib/lib' not empty so not removed                                                 
+dpkg: warning: while removing apollo-neo-buildtool, directory '/opt/apollo/neo/packages/buildtool/9.0.0-rc1-r14/core/action' not empty so not removed                                                       
+Reading package lists... Done                                                                                                                                                                               
+Building dependency tree                                                                                                                                                                                    
+Reading state information... Done                                                                                                                                                                           
+The following package was automatically installed and is no longer required:                                                                                                                                
+  libsqlite3-dev                                                                                                                                                                                            
+Use 'sudo apt autoremove' to remove it.                                                                                                                                                                     
+The following NEW packages will be installed:                                                                                                                                                               
+  apollo-neo-buildtool                                                                                                                                                                                      
+0 upgraded, 1 newly installed, 0 to remove and 70 not upgraded.
+Need to get 127 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 https://apollo-pkg-beta.cdn.bcebos.com/apollo/core bionic/main amd64 apollo-neo-buildtool amd64 9.0.0-rc1-r14 [127 kB]
+Fetched 127 kB in 0s (455 kB/s)                
+Selecting previously unselected package apollo-neo-buildtool.
+(Reading database ... 63625 files and directories currently installed.)
+Preparing to unpack .../apollo-neo-buildtool_9.0.0-rc1-r14_amd64.deb ...
+Unpacking apollo-neo-buildtool (9.0.0-rc1-r14) ...
+Setting up apollo-neo-buildtool (9.0.0-rc1-r14) ...
+[INFO] start to create symbolic links of buildtool
+[WARN] the links of pre-version will be overwrited!
+[INFO] symbolic links of buildtool created.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libSM.so.6.0.1 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libICE.so is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libXt.so.6.0.0 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libx265.so is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libXt.so.6 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libnuma.so.1 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libSM.so.6 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libqhull.so.7 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libICE.so.6.3.0 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libICE.so.6 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libqhull.so.7.2.0 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libnuma.so is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libSM.so is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libx265.so.146 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libnuma.so.1.0.0 is empty, not checked.
+/sbin/ldconfig.real: File /usr/lib/x86_64-linux-gnu/libXt.so is empty, not checked.
+
+(...) broken, buildtool build -p core failed, seems like files stored on disk got corrupted;
+
+fix: remove all pnc folders, and start clean;
+
+```
+
+### New era application-pnc-gpu
+```
+sirius@sirius-ThinkPad-X1-Extreme:~/workspace/apollo_9.0/application-pnc$ sudo aem start_gpu
+apollo_neo_dev_9.0.0_rc_r10_pnc_comp_apollo
+apollo_neo_dev_9.0.0_rc_r10_pnc_comp_opt
+[INFO] Determine whether host GPU is available ...
+[INFO] USE_GPU_HOST: 1
+[INFO] Start pulling docker image registry.baidubce.com/apollo/apollo-env-gpu:9.0-latest ...
+9.0-latest: Pulling from apollo/apollo-env-gpu
+Digest: sha256:a40252872d2815b0a9e8fae35487e0d04f7131d5b64e7e73c3a3640d845368cc
+Status: Image is up to date for registry.baidubce.com/apollo/apollo-env-gpu:9.0-latest
+registry.baidubce.com/apollo/apollo-env-gpu:9.0-latest
+[INFO] Remove existing Apollo Development container ...
+[INFO] Starting Docker container "apollo_neo_dev_9.0.0_rc_r10_pnc_comp" ...
+```
+
