@@ -501,7 +501,15 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems
   CACHE STRING "Vcpkg toolchain file")
 ```
 
-g2o
+or
+
+```
+-DCMAKE_TOOLCHAIN_FILE=/home/sirius/workspace/vcpkg/scripts/buildsystems/vcpkg.cmake
+CMake projects should use: "-DCMAKE_TOOLCHAIN_FILE=/home/sirius/workspace/vcpkg/scripts/buildsystems/vcpkg.cmake"
+```
+
+DBoW2 && g2o
+  Both modified version is included in the Thirdparty folder;
 
 Eigen
     sudo apt-get install libeigen3-dev
@@ -515,7 +523,68 @@ OpenCV
     C++ | apt install libopencv-dev
       libopencv-dev is already the newest version (3.2.0+dfsg-4ubuntu0.1)
 
+    Needs 4.4.0;
+
     [Don't build from src yet]
+
+    [Let's build from src]
+
+    sudo apt remove libopencv* [remove openCV 3.2]
+
+    [actually, try vcpkg 1st]
+    ./vcpkg search opencv
+
+    (missing dependencies)
+    sudo apt-get install autoconf
+    sudo apt install libdbus-1-dev
+    sudo apt install python3-pip [switched back to python3.6 using python alternative]
+    pip3 install jinja2
+    sudo update-alternatives --config python3
+    pip3 show jinja2 [for 3.6 Location: /home/sirius/.local/lib/python3.6/site-packages, for 3.7 Location: /home/sirius/.local/lib/python3.7/site-packages]
+    sudo apt-get install bison
+    sudo apt-get install libxi-dev libxtst-dev
+    sudo apt install libx11-dev libxft-dev libxext-dev
+    sudo apt-get install libxrandr-dev
+
+    ./vcpkg install opencv4
+
+Stored binaries in 1 destinations in 25 s.
+Elapsed time to handle opencv4:x64-linux: 12 min
+opencv4:x64-linux package ABI: 48cab8742662ef661c1abb39bac7c669bb420b8953c063fbad564bc73f64503e
+Total install time: 21 min
+If you do not install the meta-port *opencv*, the package opencv4 is compatible with CMake
+if you set the OpenCV_DIR *before* the find_package call
+
+    set(OpenCV_DIR "${VCPKG_INSTALLED_DIR}/x64-linux/share/opencv4")
+    find_package(OpenCV REQUIRED)
+
+ORB-SLAM3
+    sudo apt install libboost-all-dev
+    chmod +x build.sh
+    Add the following line to build.sh
+      -DCMAKE_TOOLCHAIN_FILE=/home/sirius/workspace/vcpkg/scripts/buildsystems/vcpkg.cmake
+
+[g2o warning]
+
+In file included from /home/sirius/workspace/orb-slam/ORB_SLAM3/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:35:0,                                                    
+                 from /home/sirius/workspace/orb-slam/ORB_SLAM3/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:               
+/home/sirius/workspace/orb-slam/ORB_SLAM3/Thirdparty/g2o/g2o/types/../core/base_binary_edge.h:60:80: warning: ‘Eigen::AlignedBit’ is deprecated [-Wdeprecated-declarations]
+       typedef Eigen::Map<Matrix<double, Dj, Di>, Matrix<double, Dj, Di>::Flags & AlignedBit ? Aligned : Unaligned > HessianBlockTransposedType;                           
+                                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~                                                                               
+In file included from /usr/include/eigen3/Eigen/Core:344:0,                                                                           
+                 from /home/sirius/workspace/orb-slam/ORB_SLAM3/Thirdparty/g2o/g2o/types/../core/jacobian_workspace.h:30,                                             
+                 from /home/sirius/workspace/orb-slam/ORB_SLAM3/Thirdparty/g2o/g2o/types/../core/optimizable_graph.h:41,                                                   
+                 from /home/sirius/workspace/orb-slam/ORB_SLAM3/Thirdparty/g2o/g2o/types/../core/base_vertex.h:30,                                                     
+                 from /home/sirius/workspace/orb-slam/ORB_SLAM3/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.h:34,   
+                 from /home/sirius/workspace/orb-slam/ORB_SLAM3/Thirdparty/g2o/g2o/types/types_seven_dof_expmap.cpp:27:                                                    
+/usr/include/eigen3/Eigen/src/Core/util/Constants.h:162:37: note: declared here                                                                 
+ EIGEN_DEPRECATED const unsigned int AlignedBit = 0x80;
+
+### cpu frequency
+sudo apt install cpufrequtils
+watch -n 1 cpufreq-info
+sudo cpufreq-set -r -g performance
+sudo cpufreq-set -r -g powersave
 
 ### apollo 8.0
 [Doc](https://apollo.baidu.com/community/Apollo-Homepage-Document/Apollo_Doc_CN_8_0)
